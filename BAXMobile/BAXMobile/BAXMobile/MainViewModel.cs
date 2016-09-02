@@ -5,9 +5,10 @@ namespace BAXMobile
 {
     public class MainViewModel
     {
-        public MainViewModel(OverviewViewModel overview)
+        public MainViewModel(OverviewViewModel overview, BucketsListViewModel bucketsViewModel)
         {
             OverviewViewModel = overview;
+            BucketsListViewModel = bucketsViewModel;
         }
 
         public OverviewViewModel OverviewViewModel { get; private set; }

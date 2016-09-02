@@ -1,5 +1,4 @@
 ﻿using System;
-using BAXMobile.Overview;
 using Xamarin.Forms;
 
 namespace BAXMobile.Buckets
@@ -9,6 +8,13 @@ namespace BAXMobile.Buckets
         public BucketsListPage()
         {
             InitializeComponent();
+        }
+
+        private BucketsListViewModel ViewModel => (BucketsListViewModel) BindingContext;
+
+        private async void OnPageAppearing(object sender, EventArgs e)
+        {
+            await ViewModel.PageIsLoading();
         }
     }
 }

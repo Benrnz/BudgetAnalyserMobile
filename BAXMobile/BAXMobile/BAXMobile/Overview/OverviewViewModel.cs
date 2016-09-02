@@ -4,21 +4,21 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BAXMobile.Model;
 using BAXMobile.Service;
+using JetBrains.Annotations;
 
 namespace BAXMobile.Overview
 {
     public class OverviewViewModel : INotifyPropertyChanged
     {
-        private readonly IBaxSummaryDataService dataService;
+        private readonly IMobileSummaryDataManager dataManager;
         private SummarisedLedgerMobileData model;
-        private DateTime lastUpdate;
         private bool isLoading;
         private string staleWarning;
 
-        public OverviewViewModel(IBaxSummaryDataService dataService)
+        public OverviewViewModel([NotNull] IMobileSummaryDataManager dataManager)
         {
-            if (dataService == null) throw new ArgumentNullException(nameof(dataService));
-            this.dataService = dataService;
+            if (dataManager == null) throw new ArgumentNullException(nameof(dataManager));
+            this.dataManager = dataManager;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -57,11 +57,10 @@ namespace BAXMobile.Overview
 
         public async Task PageIsLoading()
         {
-            if (DateTime.Now.Subtract(this.lastUpdate).TotalMinutes <= 3) return;
             IsLoading = true;
             this.staleWarning = string.Empty;
-            this.lastUpdate = DateTime.Now;
-            Model = await this.dataService.DownloadDataAsync();
+            await this.dataManager.GetData();
+            Model = this.dataManager.SummaryData;
             if (DateTime.Now.Subtract(Model.LastTransactionImport).TotalDays >= 5)
             {
                 StaleWarning = "WARNING: New transactions have not been imported for 5 or more days.";

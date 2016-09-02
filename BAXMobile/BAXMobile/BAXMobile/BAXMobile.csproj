@@ -56,6 +56,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\FakeBaxSummaryDataService.cs" />
     <Compile Include="Service\IBaxSummaryDataService.cs" />
+    <Compile Include="Service\IMobileSummaryDataManager.cs" />
+    <Compile Include="Service\MobileSummaryDataManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
