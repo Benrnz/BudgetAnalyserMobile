@@ -2,6 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAXMobile.Overview.OverviewPage"
-             Title="Overview">
-  <Label Text="Hello from Overview Page" VerticalOptions="Center" HorizontalOptions="Center" />
+             Title="Overview"
+             Appearing="OnPageAppearing"
+             BackgroundColor="{StaticResource BackgroundColor}">
+  <Grid Margin="10">
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    
+    <Label Grid.Row="0" 
+           Grid.Column="0"
+           Grid.ColumnSpan="2"
+           Style="{StaticResource Style.LabelHeading}"
+           Text="{Binding Model.Title}"/>
+    
+    <Label Grid.Row="1"
+           Grid.Column="0"
+           Text="Transactions Updated:"/>
+    <Label Grid.Row="1"
+           Grid.Column="1"
+           Text="{Binding Model.LastTransactionImport, StringFormat='{0:d MMM yy hh:mm tt}'}"/>
+
+    <Label Grid.Row="2"
+         Grid.Column="0"
+         Text="For Month Starting:"/>
+    <Label Grid.Row="2"
+           Grid.Column="1"
+           Text="{Binding Model.StartOfMonth, StringFormat='{0:d MMMM}'}"/>
+
+    <Label Grid.Row="3"
+           Grid.Column="0"
+           Style="{StaticResource Style.Paragraph}"
+           Text="Last Upload:"/>
+    <Label Grid.Row="3"
+           Grid.Column="1"
+           Style="{StaticResource Style.Paragraph}"
+           Text="{Binding Model.Exported, StringFormat='{0:d MMM yy hh:mm tt}'}"/>
+
+  </Grid>
 </ContentPage>

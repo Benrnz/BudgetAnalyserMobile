@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Diagnostics;
+using BAXMobile.Overview;
+using BAXMobile.Service;
+using Xamarin.Forms;
 
 namespace BAXMobile
 {
@@ -7,8 +11,17 @@ namespace BAXMobile
         public App()
         {
             InitializeComponent();
+            var mainViewModel = CompositeRoot();
+            MainPage = new MainPage {BindingContext = mainViewModel};
+        }
 
-            MainPage = new MainPage();
+        private MainViewModel CompositeRoot()
+        {
+            return new MainViewModel(
+                new OverviewViewModel(
+                    new FakeBaxSummaryDataService()
+                )
+            );
         }
 
         protected override void OnStart()
@@ -24,6 +37,11 @@ namespace BAXMobile
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static void CurrentDomainUnhandledException(object sender, object ex, bool isTerminating)
+        {
+            Debug.WriteLine(ex.ToString());
         }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace BAXMobile.Overview
@@ -13,6 +8,13 @@ namespace BAXMobile.Overview
         public OverviewPage()
         {
             InitializeComponent();
+        }
+
+        private OverviewViewModel ViewModel => (OverviewViewModel) BindingContext;
+
+        private async void OnPageAppearing(object sender, EventArgs e)
+        {
+            await ViewModel.PageIsLoading();
         }
     }
 }

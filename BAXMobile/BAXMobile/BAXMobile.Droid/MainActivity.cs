@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Xamarin.Forms;
@@ -17,11 +18,17 @@ namespace BAXMobile.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
 
             base.OnCreate(bundle);
 
             Forms.Init(this, bundle);
             LoadApplication(new App());
+        }
+
+        private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            App.CurrentDomainUnhandledException(sender, e.ExceptionObject, e.IsTerminating);
         }
     }
 }
