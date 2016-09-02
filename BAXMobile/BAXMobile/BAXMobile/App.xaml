@@ -7,15 +7,16 @@
 
         <ResourceDictionary>
 
-            <Color x:Key="BackgroundColor">#33302E</Color>
-            <Color x:Key="TextColor">Black</Color>
-            <Color x:Key="HeadingColor">Green</Color>
+            <Color x:Key="BackgroundColour">#9393A3</Color>
+            <Color x:Key="TextColour">Black</Color>
+            <Color x:Key="HeadingColour">Green</Color>
+            <Color x:Key="ImportantTextColour">Maroon</Color>
 
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="VerticalOptions" Value="End" />
                 <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource TextColour}" />
             </Style>
 
             <Style x:Key="Style.LabelHeading"
@@ -23,7 +24,7 @@
                 <Setter Property="FontSize" Value="28" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="{StaticResource HeadingColor}" />
+                <Setter Property="TextColor" Value="{StaticResource HeadingColour}" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
@@ -33,7 +34,7 @@
                 <Setter Property="LineBreakMode" Value="WordWrap" />
                 <Setter Property="VerticalOptions" Value="End" />
                 <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource TextColour}" />
             </Style>
         </ResourceDictionary>
 
