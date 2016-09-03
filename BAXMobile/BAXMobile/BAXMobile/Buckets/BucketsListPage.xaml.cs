@@ -14,7 +14,12 @@ namespace BAXMobile.Buckets
 
         private async void OnPageAppearing(object sender, EventArgs e)
         {
-            await ViewModel.PageIsLoading();
+            await ViewModel.PageIsLoading(Navigation);
+        }
+
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await ViewModel.NavigateToBucket();
         }
     }
 }

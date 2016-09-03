@@ -43,6 +43,9 @@
       <DependentUpon>BucketsListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Buckets\BucketsListViewModel.cs" />
+    <Compile Include="Buckets\BucketViewPage.xaml.cs">
+      <DependentUpon>BucketViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -96,7 +99,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Buckets\BucketViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Buckets\BucketsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

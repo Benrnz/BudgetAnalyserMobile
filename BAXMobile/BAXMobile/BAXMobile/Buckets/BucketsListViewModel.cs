@@ -16,6 +16,7 @@ namespace BAXMobile.Buckets
         private bool isLoading;
         private ObservableCollection<SummarisedLedgerBucket> ledgerBuckets;
         private SummarisedLedgerBucket selectedBucket;
+        private INavigation navigator;
 
         public BucketsListViewModel([NotNull] IMobileSummaryDataManager dataManager)
         {
@@ -56,13 +57,13 @@ namespace BAXMobile.Buckets
                 if (Equals(value, this.selectedBucket)) return;
                 this.selectedBucket = value;
                 OnPropertyChanged();
-                if (this.selectedBucket != null) NavigateToBucket(SelectedBucket);
             }
         }
 
-        public async Task PageIsLoading()
+        public async Task PageIsLoading(INavigation viewNavigator)
         {
             IsLoading = true;
+            this.navigator = viewNavigator;
             await this.dataManager.GetData();
             if (this.dataManager.IsLoading) return;
             UpdateWithNewData();
@@ -75,9 +76,10 @@ namespace BAXMobile.Buckets
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void NavigateToBucket(SummarisedLedgerBucket bucket)
+        public async Task NavigateToBucket()
         {
-            Application.Current.MainPage.DisplayAlert(Application.Current.MainPage.Title, $"You selected {bucket.Description}", "OK");
+            if (this.navigator == null) return;
+            await this.navigator.PushAsync(new BucketViewPage { BindingContext = SelectedBucket });
         }
 
         private void OnDataUpdated(object sender, EventArgs e)
