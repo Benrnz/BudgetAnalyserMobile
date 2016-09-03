@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace BAXMobile
 {
@@ -7,6 +8,13 @@ namespace BAXMobile
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private MainViewModel ViewModel => (MainViewModel) BindingContext;
+
+        private async void OnPageAppearing(object sender, EventArgs e)
+        {
+            await ViewModel.PageIsLoading();
         }
     }
 }

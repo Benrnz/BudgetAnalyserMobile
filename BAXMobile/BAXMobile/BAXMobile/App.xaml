@@ -11,6 +11,7 @@
             <Color x:Key="TextColour">Black</Color>
             <Color x:Key="HeadingColour">Green</Color>
             <Color x:Key="ImportantTextColour">Maroon</Color>
+            <Color x:Key="TileBackgroundColour">#8393A3</Color>
 
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
@@ -28,6 +29,15 @@
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
+            <Style x:Key="Style.LabelSubHeading" 
+                   TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="#606060" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
             <Style x:Key="Style.Paragraph"
                    TargetType="Label">
                 <Setter Property="FontSize" Value="14" />
@@ -35,6 +45,20 @@
                 <Setter Property="VerticalOptions" Value="End" />
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="TextColor" Value="{StaticResource TextColour}" />
+            </Style>
+
+            <Style x:Key="Style.LabelNumber"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="VerticalOptions"
+                        Value="End" />
+                <Setter Property="HorizontalOptions"
+                        Value="Fill" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource TextColour}" />
+                <Setter Property="HorizontalTextAlignment" 
+                        Value="End"/>
             </Style>
         </ResourceDictionary>
 

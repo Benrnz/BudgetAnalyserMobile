@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:overview="clr-namespace:BAXMobile.Overview;assembly=BAXMobile"
              xmlns:buckets="clr-namespace:BAXMobile.Buckets;assembly=BAXMobile"
-             x:Class="BAXMobile.MainPage">
+             x:Class="BAXMobile.MainPage"
+             Appearing="OnPageAppearing"
+             Title="{Binding Title}">
 
   <overview:OverviewPage BindingContext="{Binding OverviewViewModel}"/>
   <buckets:BucketsListPage BindingContext="{Binding BucketsListViewModel}"/>

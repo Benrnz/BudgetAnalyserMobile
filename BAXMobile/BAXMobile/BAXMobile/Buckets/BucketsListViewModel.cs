@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BAXMobile.Model;
 using BAXMobile.Service;
 using JetBrains.Annotations;
+using Xamarin.Forms;
 
 namespace BAXMobile.Buckets
 {
@@ -12,13 +14,17 @@ namespace BAXMobile.Buckets
     {
         private readonly IMobileSummaryDataManager dataManager;
         private bool isLoading;
-        private SummarisedLedgerMobileData model;
+        private ObservableCollection<SummarisedLedgerBucket> ledgerBuckets;
+        private SummarisedLedgerBucket selectedBucket;
 
         public BucketsListViewModel([NotNull] IMobileSummaryDataManager dataManager)
         {
             if (dataManager == null) throw new ArgumentNullException(nameof(dataManager));
             this.dataManager = dataManager;
+            this.dataManager.DataUpdated += OnDataUpdated;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool IsLoading
         {
@@ -31,30 +37,61 @@ namespace BAXMobile.Buckets
             }
         }
 
-        public async Task PageIsLoading()
+        public SummarisedLedgerBucket SelectedBucket
         {
-            IsLoading = true;
-            await this.dataManager.GetData();
-            Model = this.dataManager.SummaryData;
-            IsLoading = false;
+            get { return this.selectedBucket; }
+            set
+            {
+                if (Equals(value, this.selectedBucket)) return;
+                this.selectedBucket = value;
+                OnPropertyChanged();
+                if (this.selectedBucket != null) NavigateToBucket(SelectedBucket);
+            }
         }
 
-        public SummarisedLedgerMobileData Model
+        private void NavigateToBucket(SummarisedLedgerBucket bucket)
         {
-            get { return this.model; }
+            Application.Current.MainPage.DisplayAlert(Application.Current.MainPage.Title, $"You selected {bucket.Description}", "OK");
+        }
+
+        public ObservableCollection<SummarisedLedgerBucket> LedgerBuckets
+        {
+            get { return this.ledgerBuckets; }
             private set
             {
-                this.model = value;
+                if (Equals(value, this.ledgerBuckets)) return;
+                this.ledgerBuckets = value;
                 OnPropertyChanged();
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public async Task PageIsLoading()
+        {
+            IsLoading = true;
+            await this.dataManager.GetData();
+            if (this.dataManager.IsLoading) return;
+            UpdateWithNewData();
+            IsLoading = false;
+        }
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void OnDataUpdated(object sender, EventArgs e)
+        {
+            UpdateWithNewData();
+        }
+
+        private void UpdateWithNewData()
+        {
+            LedgerBuckets?.Clear();
+            SelectedBucket = null;
+            IsLoading = false;
+            if (this.dataManager.SummaryData == null) return;
+            LedgerBuckets = new ObservableCollection<SummarisedLedgerBucket>(this.dataManager.SummaryData.LedgerBuckets);
         }
     }
 }

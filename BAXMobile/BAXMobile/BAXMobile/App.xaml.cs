@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using BAXMobile.Buckets;
 using BAXMobile.Overview;
 using BAXMobile.Service;
@@ -18,11 +17,13 @@ namespace BAXMobile
 
         private MainViewModel CompositeRoot()
         {
-            var dataManager = new MobileSummaryDataManager(new FakeBaxSummaryDataService());
+            var dataService = new FakeBaxSummaryDataService();
+            var dataManager = new MobileSummaryDataManager(dataService);
 
             return new MainViewModel(
                 new OverviewViewModel(dataManager),
-                new BucketsListViewModel(dataManager)
+                new BucketsListViewModel(dataManager),
+                dataManager
             );
         }
 

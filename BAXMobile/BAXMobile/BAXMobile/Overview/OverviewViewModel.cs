@@ -11,14 +11,15 @@ namespace BAXMobile.Overview
     public class OverviewViewModel : INotifyPropertyChanged
     {
         private readonly IMobileSummaryDataManager dataManager;
-        private SummarisedLedgerMobileData model;
         private bool isLoading;
+        private SummarisedLedgerMobileData model;
         private string staleWarning;
 
         public OverviewViewModel([NotNull] IMobileSummaryDataManager dataManager)
         {
             if (dataManager == null) throw new ArgumentNullException(nameof(dataManager));
             this.dataManager = dataManager;
+            this.dataManager.DataUpdated += OnDataUpdated;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,19 +59,34 @@ namespace BAXMobile.Overview
         public async Task PageIsLoading()
         {
             IsLoading = true;
-            this.staleWarning = string.Empty;
+            StaleWarning = string.Empty;
             await this.dataManager.GetData();
-            Model = this.dataManager.SummaryData;
-            if (DateTime.Now.Subtract(Model.LastTransactionImport).TotalDays >= 5)
-            {
-                StaleWarning = "WARNING: New transactions have not been imported for 5 or more days.";
-            }
+            if (this.dataManager.IsLoading) return;
+            UpdateWithNewData();
             IsLoading = false;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void OnDataUpdated(object sender, EventArgs e)
+        {
+            UpdateWithNewData();
+        }
+
+        private void UpdateWithNewData()
+        {
+            IsLoading = false;
+            Model = this.dataManager.SummaryData;
+            if (Model != null)
+            {
+                if (DateTime.Now.Subtract(Model.LastTransactionImport).TotalDays >= 5)
+                {
+                    StaleWarning = "WARNING: New transactions have not been imported for 5 or more days.";
+                }
+            }
         }
     }
 }
