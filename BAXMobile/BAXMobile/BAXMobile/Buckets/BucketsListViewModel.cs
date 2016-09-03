@@ -79,7 +79,7 @@ namespace BAXMobile.Buckets
         public async Task NavigateToBucket()
         {
             if (this.navigator == null) return;
-            await this.navigator.PushAsync(new BucketViewPage { BindingContext = SelectedBucket });
+            await this.navigator.PushAsync(new BucketViewPage { BindingContext = new LedgerBucketViewModel(SelectedBucket) });
         }
 
         private void OnDataUpdated(object sender, EventArgs e)

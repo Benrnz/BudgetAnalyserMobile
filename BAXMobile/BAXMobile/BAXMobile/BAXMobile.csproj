@@ -46,6 +46,7 @@
     <Compile Include="Buckets\BucketViewPage.xaml.cs">
       <DependentUpon>BucketViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Buckets\LedgerBucketViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
