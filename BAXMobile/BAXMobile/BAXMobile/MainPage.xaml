@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:overview="clr-namespace:BAXMobile.Overview;assembly=BAXMobile"
-             xmlns:buckets="clr-namespace:BAXMobile.Buckets;assembly=BAXMobile"
-             x:Class="BAXMobile.MainPage"
-             Appearing="OnPageAppearing"
-             Title="{Binding Title}">
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:overview="clr-namespace:BAXMobile.Overview;assembly=BAXMobile"
+            xmlns:buckets="clr-namespace:BAXMobile.Buckets;assembly=BAXMobile"
+            x:Class="BAXMobile.MainPage"
+            Appearing="OnPageAppearing"
+            Title="{Binding Title}">
 
-  <overview:OverviewPage BindingContext="{Binding OverviewViewModel}"/>
-  <buckets:BucketsListPage BindingContext="{Binding BucketsListViewModel}"/>
+    <overview:OverviewPage BindingContext="{Binding OverviewViewModel}"/>
+    <NavigationPage Title="Budget Buckets">
+        <x:Arguments>
+            <buckets:BucketsListPage BindingContext="{Binding BucketsListViewModel}"/>
+        </x:Arguments>
+    </NavigationPage>
 
 </TabbedPage>

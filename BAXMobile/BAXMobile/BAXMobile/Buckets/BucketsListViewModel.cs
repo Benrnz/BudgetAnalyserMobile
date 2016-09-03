@@ -37,6 +37,17 @@ namespace BAXMobile.Buckets
             }
         }
 
+        public ObservableCollection<SummarisedLedgerBucket> LedgerBuckets
+        {
+            get { return this.ledgerBuckets; }
+            private set
+            {
+                if (Equals(value, this.ledgerBuckets)) return;
+                this.ledgerBuckets = value;
+                OnPropertyChanged();
+            }
+        }
+
         public SummarisedLedgerBucket SelectedBucket
         {
             get { return this.selectedBucket; }
@@ -46,22 +57,6 @@ namespace BAXMobile.Buckets
                 this.selectedBucket = value;
                 OnPropertyChanged();
                 if (this.selectedBucket != null) NavigateToBucket(SelectedBucket);
-            }
-        }
-
-        private void NavigateToBucket(SummarisedLedgerBucket bucket)
-        {
-            Application.Current.MainPage.DisplayAlert(Application.Current.MainPage.Title, $"You selected {bucket.Description}", "OK");
-        }
-
-        public ObservableCollection<SummarisedLedgerBucket> LedgerBuckets
-        {
-            get { return this.ledgerBuckets; }
-            private set
-            {
-                if (Equals(value, this.ledgerBuckets)) return;
-                this.ledgerBuckets = value;
-                OnPropertyChanged();
             }
         }
 
@@ -78,6 +73,11 @@ namespace BAXMobile.Buckets
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void NavigateToBucket(SummarisedLedgerBucket bucket)
+        {
+            Application.Current.MainPage.DisplayAlert(Application.Current.MainPage.Title, $"You selected {bucket.Description}", "OK");
         }
 
         private void OnDataUpdated(object sender, EventArgs e)
