@@ -50,7 +50,7 @@
                                     Padding="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="75" />
+                                        <ColumnDefinition Width="125" />
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding BucketCode}" />
                                     <Label

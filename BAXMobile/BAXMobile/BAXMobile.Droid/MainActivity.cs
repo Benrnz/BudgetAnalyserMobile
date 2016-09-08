@@ -23,7 +23,9 @@ namespace BAXMobile.Droid
             base.OnCreate(bundle);
 
             Forms.Init(this, bundle);
-            LoadApplication(new App());
+            var app = new App();
+            app.CompositeRoot(new AndroidHashingAlgorithm());
+            LoadApplication(app);
         }
 
         private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)

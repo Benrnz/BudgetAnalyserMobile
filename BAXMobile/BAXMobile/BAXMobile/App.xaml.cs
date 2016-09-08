@@ -11,20 +11,21 @@ namespace BAXMobile
         public App()
         {
             InitializeComponent();
-            var mainViewModel = CompositeRoot();
-            MainPage = new MainPage {BindingContext = mainViewModel};
         }
 
-        private MainViewModel CompositeRoot()
+        public void CompositeRoot(IHashingAlgorithm hashingAlgorithm)
         {
-            var dataService = new FakeBaxSummaryDataService();
+            // var dataService = new FakeBaxSummaryDataService();
+            var dataService = new AmazonS3BaxSummaryDataService(hashingAlgorithm, SecretCreds.AwsAccessKeyId, SecretCreds.AwsSecret);
             var dataManager = new MobileSummaryDataManager(dataService);
 
-            return new MainViewModel(
+            var mainViewModel = new MainViewModel(
                 new OverviewViewModel(dataManager),
                 new BucketsListViewModel(dataManager),
                 dataManager
             );
+
+            MainPage = new MainPage { BindingContext = mainViewModel };
         }
 
         protected override void OnStart()
