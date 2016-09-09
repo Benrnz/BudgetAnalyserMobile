@@ -2,7 +2,8 @@
     x:Class="BAXMobile.Buckets.BucketViewPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="{StaticResource BackgroundColour}">
+    BackgroundColor="{StaticResource BackgroundColour}"
+    Appearing="OnAppearing">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -55,7 +56,8 @@
                 HorizontalOptions="FillAndExpand"
                 HorizontalTextAlignment="End"
                 Text="{Binding OpeningBalance, StringFormat='{0:C}'}" />
-            <ProgressBar Progress="{Binding Progress}" />
+            <ProgressBar x:Name="progressBar" 
+                         Progress="1" />
             <Label Text="{Binding RemainingBalance, StringFormat='{0:C}'}" />
             <Label Text="Remaining" />
         </StackLayout>

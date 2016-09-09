@@ -1,12 +1,10 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using BAXMobile.Model;
 
 namespace BAXMobile.Buckets
 {
     public class LedgerBucketViewModel : SummarisedLedgerBucket
     {
-        private double progress;
-
         public LedgerBucketViewModel(SummarisedLedgerBucket bucketData)
         {
             BucketCode = bucketData.BucketCode;
@@ -15,25 +13,11 @@ namespace BAXMobile.Buckets
             MonthlyBudgetAmount = bucketData.MonthlyBudgetAmount;
             OpeningBalance = bucketData.OpeningBalance;
             RemainingBalance = bucketData.RemainingBalance;
-            if (OpeningBalance == 0)
-            {
-                Progress = 0;
-            }
-            else
-            {
-                Progress = (double)RemainingBalance / (double)OpeningBalance;
-            }
         }
         
-        public double Progress
+        public async Task PageIsLoading()
         {
-            get { return this.progress; }
-            set
-            {
-                if (Math.Abs(value - this.progress) < 0.001) return;
-                this.progress = value;
-                OnPropertyChanged();
-            }
+            await Task.Delay(500);
         }
     }
 }
