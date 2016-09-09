@@ -16,6 +16,7 @@ namespace BAXMobile
         public void CompositeRoot(IHashingAlgorithm hashingAlgorithm)
         {
             // var dataService = new FakeBaxSummaryDataService();
+            // SecretCreds is a non-source-controlled file to store the two AWS credential values.
             var dataService = new AmazonS3BaxSummaryDataService(hashingAlgorithm, SecretCreds.AwsAccessKeyId, SecretCreds.AwsSecret);
             var dataManager = new MobileSummaryDataManager(dataService);
 

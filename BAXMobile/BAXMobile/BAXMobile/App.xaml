@@ -2,12 +2,15 @@
 
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baxMobile="clr-namespace:BAXMobile;assembly=BAXMobile"
              x:Class="BAXMobile.App">
     <Application.Resources>
 
         <ResourceDictionary>
 
-            <Color x:Key="BackgroundColour">#9393A3</Color>
+            <baxMobile:NonZeroConverter x:Key="Converter.NonZero" />
+            
+            <Color x:Key="BackgroundColour">White</Color>
             <Color x:Key="TextColour">Black</Color>
             <Color x:Key="HeadingColour">Green</Color>
             <Color x:Key="ImportantTextColour">Maroon</Color>

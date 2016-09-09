@@ -27,10 +27,22 @@ namespace BAXMobile.Service
             if (DateTime.Now.Subtract(this.lastUpdate).TotalMinutes <= 3) return false;
             IsLoading = true;
             this.lastUpdate = DateTime.Now;
-            SummaryData = await this.dataService.DownloadDataAsync();
+            try
+            {
+                SummaryData = await this.dataService.DownloadDataAsync();
+                ErrorMessage = null;
+            }
+            catch (Exception ex)
+            {
+                this.lastUpdate = DateTime.MinValue;
+                ErrorMessage = ex.Message;
+            }
+
             DataUpdated?.Invoke(this, EventArgs.Empty);
             IsLoading = false;
             return true;
         }
+
+        public string ErrorMessage { get; private set; }
     }
 }

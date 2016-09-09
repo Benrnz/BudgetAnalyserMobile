@@ -50,13 +50,10 @@
         <Label
             Grid.Column="0"
             Grid.Row="4"
+            Grid.ColumnSpan="2"
             Style="{StaticResource Style.Paragraph}"
-            Text="Last Upload:" />
-        <Label
-            Grid.Column="1"
-            Grid.Row="4"
-            Style="{StaticResource Style.Paragraph}"
-            Text="{Binding Model.Exported, StringFormat='{0:d MMM yy h:mm tt}'}" />
+            Text="{Binding ErrorMessage}"
+            TextColor="{StaticResource ImportantTextColour}"/>
         <StackLayout
             BackgroundColor="{StaticResource BackgroundColour}"
             Grid.Column="0"

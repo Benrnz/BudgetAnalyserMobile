@@ -11,6 +11,7 @@ namespace BAXMobile.Overview
     public class OverviewViewModel : INotifyPropertyChanged
     {
         private readonly IMobileSummaryDataManager dataManager;
+        private string errorMessage;
         private bool isLoading;
         private SummarisedLedgerMobileData model;
         private string staleWarning;
@@ -23,6 +24,17 @@ namespace BAXMobile.Overview
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string ErrorMessage
+        {
+            get { return this.errorMessage; }
+            private set
+            {
+                if (value == this.errorMessage) return;
+                this.errorMessage = value;
+                OnPropertyChanged();
+            }
+        }
 
         public bool IsLoading
         {
@@ -80,6 +92,7 @@ namespace BAXMobile.Overview
         {
             IsLoading = false;
             Model = this.dataManager.SummaryData;
+            ErrorMessage = this.dataManager.ErrorMessage;
             if (Model != null)
             {
                 if (DateTime.Now.Subtract(Model.LastTransactionImport).TotalDays >= 5)

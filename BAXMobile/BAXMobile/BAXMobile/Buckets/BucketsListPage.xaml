@@ -41,9 +41,8 @@
                         <ViewCell.View>
                             <Grid>
                                 <Grid
-                                    BackgroundColor="Black"
-                                    Margin="7,0,10,7"
-                                    Opacity="0.2" />
+                                    BackgroundColor="#637383"
+                                    Margin="7,0,10,7" />
                                 <Grid
                                     BackgroundColor="{StaticResource TileBackgroundColour}"
                                     Margin="10,0,10,10"
