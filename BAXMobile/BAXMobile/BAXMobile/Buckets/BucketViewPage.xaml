@@ -2,6 +2,7 @@
     x:Class="BAXMobile.Buckets.BucketViewPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:baxMobile="clr-namespace:BAXMobile;assembly=BAXMobile"
     BackgroundColor="{StaticResource BackgroundColour}"
     Appearing="OnAppearing">
 
@@ -37,29 +38,52 @@
         <Label
             Grid.Column="0"
             Grid.Row="3"
+            IsVisible="{Binding MonthlyBudgetAmount, Converter={StaticResource Converter.NonZero}}"
             Style="{StaticResource Style.Paragraph}"
-            Text="Monthly Budget Amount: " 
-            IsVisible="{Binding MonthlyBudgetAmount, Converter={StaticResource Converter.NonZero}}"/>
+            Text="Monthly Budget Amount: " />
         <Label
             Grid.Column="1"
             Grid.Row="3"
+            IsVisible="{Binding MonthlyBudgetAmount, Converter={StaticResource Converter.NonZero}}"
             Style="{StaticResource Style.Paragraph}"
-            Text="{Binding MonthlyBudgetAmount, StringFormat='{0:C}'}"
-            IsVisible="{Binding MonthlyBudgetAmount, Converter={StaticResource Converter.NonZero}}"/>
+            Text="{Binding MonthlyBudgetAmount, StringFormat='{0:C}'}" />
         <StackLayout
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.Row="4"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="CenterAndExpand">
+            Margin="0,20,0,0"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
             <Label
                 HorizontalOptions="FillAndExpand"
-                HorizontalTextAlignment="End"
+                HorizontalTextAlignment="Center"
                 Text="{Binding OpeningBalance, StringFormat='{0:C}'}" />
-            <ProgressBar x:Name="progressBar" 
-                         Progress="1" />
-            <Label Text="{Binding RemainingBalance, StringFormat='{0:C}'}" />
-            <Label Text="Remaining" />
+            <ContentView
+                HeightRequest="200"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start">
+                <BoxView
+                    x:Name="fundsVisual"
+                    BackgroundColor="{StaticResource ImportantTextColour}"
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    WidthRequest="75"/>
+            </ContentView>
+            <BoxView
+                BackgroundColor="{StaticResource ImportantTextColour}"
+                HeightRequest="2"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" />
+            <Label
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{Binding RemainingBalance, StringFormat='{0:C}'}" />
+            <Label
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Remaining" />
         </StackLayout>
     </Grid>
 

@@ -66,6 +66,7 @@
     <Compile Include="Service\IHashingAlgorithm.cs" />
     <Compile Include="Service\IMobileSummaryDataManager.cs" />
     <Compile Include="Service\MobileSummaryDataManager.cs" />
+    <Compile Include="AnimateBoxTriggerAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

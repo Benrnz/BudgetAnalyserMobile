@@ -16,15 +16,19 @@ namespace BAXMobile.Buckets
             var controller = (LedgerBucketViewModel) BindingContext;
             await controller.PageIsLoading();
 
+            var changeValueAction = new Action<double>(d => this.fundsVisual.HeightRequest = d);
+            double targetHeight;
             if (controller.OpeningBalance == 0)
             {
-                await this.progressBar.ProgressTo(0, 750, Easing.BounceOut);
+                targetHeight = 0;
             }
             else
             {
-                var percentage = controller.RemainingBalance / controller.OpeningBalance;
-                await this.progressBar.ProgressTo((double)percentage, 750, Easing.BounceOut);
+                var percentage = (double)controller.RemainingBalance / (double)controller.OpeningBalance;
+                targetHeight = 200 * percentage;
             }
+
+            this.fundsVisual.Animate("HeightRequest", changeValueAction, 200D, targetHeight, length: 750, easing: Easing.BounceOut);
         }
     }
 }
