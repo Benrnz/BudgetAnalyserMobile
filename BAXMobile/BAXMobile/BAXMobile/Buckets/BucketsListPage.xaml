@@ -41,11 +41,11 @@
                         <ViewCell.View>
                             <Grid>
                                 <Grid
-                                    BackgroundColor="#637383"
+                                    BackgroundColor="#33000000"
                                     Margin="7,0,10,7" />
                                 <Grid
                                     BackgroundColor="{StaticResource TileBackgroundColour}"
-                                    Margin="10,0,10,10"
+                                    Margin="10,1,11,10"
                                     Padding="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />

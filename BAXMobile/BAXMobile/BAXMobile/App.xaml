@@ -14,7 +14,7 @@
             <Color x:Key="TextColour">Black</Color>
             <Color x:Key="HeadingColour">Green</Color>
             <Color x:Key="ImportantTextColour">Maroon</Color>
-            <Color x:Key="TileBackgroundColour">#8393A3</Color>
+            <Color x:Key="TileBackgroundColour">#eeeeee</Color>
 
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
