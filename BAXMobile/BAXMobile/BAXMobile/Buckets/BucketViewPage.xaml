@@ -12,6 +12,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -35,6 +36,7 @@
             Grid.Row="2"
             Style="{StaticResource Style.Paragraph}"
             Text="{Binding BucketType}" />
+
         <Label
             Grid.Column="0"
             Grid.Row="3"
@@ -47,10 +49,22 @@
             IsVisible="{Binding MonthlyBudgetAmount, Converter={StaticResource Converter.NonZero}}"
             Style="{StaticResource Style.Paragraph}"
             Text="{Binding MonthlyBudgetAmount, StringFormat='{0:C}'}" />
+
+        <Label Grid.Column="0"
+               Grid.Row="4"
+               IsVisible="{Binding AccountName, Converter={StaticResource Converter.NullOrEmpty}}"
+               Style="{StaticResource Style.Paragraph}"
+               Text="Account: " />
+        <Label Grid.Column="1"
+               Grid.Row="4"
+               IsVisible="{Binding AccountName, Converter={StaticResource Converter.NullOrEmpty}}"
+               Style="{StaticResource Style.Paragraph}"
+               Text="{Binding AccountName}" />
+        
         <StackLayout
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Grid.Row="4"
+            Grid.Row="5"
             HorizontalOptions="FillAndExpand"
             Margin="0,20,0,0"
             Spacing="0"

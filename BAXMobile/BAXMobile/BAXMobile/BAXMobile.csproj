@@ -54,6 +54,7 @@
     <Compile Include="Model\SummarisedLedgerBucket.cs" />
     <Compile Include="Model\SummarisedLedgerMobileData.cs" />
     <Compile Include="NonZeroConverter.cs" />
+    <Compile Include="NullOrEmptyVisibilityConverter.cs" />
     <Compile Include="Overview\OverviewPage.xaml.cs">
       <DependentUpon>OverviewPage.xaml</DependentUpon>
     </Compile>

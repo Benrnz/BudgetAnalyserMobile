@@ -9,6 +9,7 @@
         <ResourceDictionary>
 
             <baxMobile:NonZeroConverter x:Key="Converter.NonZero" />
+            <baxMobile:NullOrEmptyVisibilityConverter x:Key="Converter.NullOrEmpty" />
             
             <Color x:Key="BackgroundColour">White</Color>
             <Color x:Key="TextColour">Black</Color>

@@ -14,6 +14,7 @@ namespace BAXMobile.Model
         private decimal monthlyBudgetAmount;
         private decimal openingBalance;
         private decimal remainingBalance;
+        private string accountName;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -110,6 +111,19 @@ namespace BAXMobile.Model
                     this.remainingBalance = value;
                     OnPropertyChanged();
                 }
+            }
+        }
+
+        /// <summary>
+        /// The name of the account as it appears in Budget Analyser.
+        /// </summary>
+        public string AccountName
+        {
+            get { return this.accountName; }
+            set
+            {
+                this.accountName = value;
+                OnPropertyChanged();
             }
         }
 
