@@ -13,6 +13,7 @@ namespace BAXMobile.Buckets
             MonthlyBudgetAmount = bucketData.MonthlyBudgetAmount;
             OpeningBalance = bucketData.OpeningBalance;
             RemainingBalance = bucketData.RemainingBalance;
+            AccountName = bucketData.AccountName;
         }
         
         public async Task PageIsLoading()
