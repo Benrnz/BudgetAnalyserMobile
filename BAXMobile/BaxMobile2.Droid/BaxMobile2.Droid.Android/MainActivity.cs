@@ -5,7 +5,11 @@ using BAXMobile;
 
 namespace BaxMobile2.Droid
 {
-    [Activity(Label = "BaxMobile2.Droid", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "BAX Mobile",
+        Icon = "@drawable/icon",
+        Theme = "@style/MainTheme",
+        MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -16,7 +20,9 @@ namespace BaxMobile2.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            var app = new App();
+            app.CompositeRoot(new AndroidHashingAlgorithm());
+            LoadApplication(app);
         }
     }
 }

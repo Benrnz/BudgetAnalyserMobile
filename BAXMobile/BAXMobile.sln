@@ -10,9 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaxMobile2.Droid.Android", "BaxMobile2.Droid\BaxMobile2.Droid.Android\BaxMobile2.Droid.Android.csproj", "{5608B299-C04C-4EC3-9ED1-A36C322AE2DB}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		BaxMobile2.Droid\BaxMobile2.Droid\BaxMobile2.Droid.projitems*{5608b299-c04c-4ec3-9ed1-a36c322ae2db}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
 		Ad-Hoc|ARM = Ad-Hoc|ARM
