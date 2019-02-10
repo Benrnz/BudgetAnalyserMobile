@@ -251,3 +251,4 @@ paket-files/
 .idea/
 *.sln.iml
 BAXMobile/BAXMobile/SecretCreds.cs
+BAXMobile/BAXMobile/SecretCreds2.cs
