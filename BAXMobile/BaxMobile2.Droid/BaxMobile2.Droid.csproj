@@ -93,7 +93,7 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BAXMobile\BAXMobile\BAXMobile.csproj">
+    <ProjectReference Include="..\BAXMobile\BAXMobile.csproj">
       <Project>{1aefa6ce-2954-4224-8c9b-ef4c17b99688}</Project>
       <Name>BAXMobile</Name>
     </ProjectReference>
