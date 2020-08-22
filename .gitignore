@@ -250,4 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-BAXMobile/BAXMobile/BAXMobile/SecretCreds.cs
+BAXMobile/BAXMobile/SecretCreds.cs
+BAXMobile/BAXMobile/SecretCreds2.cs

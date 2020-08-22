@@ -1,8 +1,8 @@
+﻿using BAXMobile.Service;
 using System.Security.Cryptography;
 using System.Text;
-using BAXMobile.Service;
 
-namespace BAXMobile.Droid
+namespace BaxMobile2.Droid
 {
     public class AndroidHashingAlgorithm : IHashingAlgorithm
     {
