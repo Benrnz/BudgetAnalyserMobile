@@ -1,15 +1,16 @@
 ﻿using System;
+using Xamarin.Forms;
 
-namespace BAXMobile
+namespace BAXMobile.Overview
 {
-    public partial class MainPage
+    public partial class OverviewPage : ContentPage
     {
-        public MainPage()
+        public OverviewPage()
         {
             InitializeComponent();
         }
-        
-        private MainViewModel ViewModel => (MainViewModel) BindingContext;
+
+        private OverviewViewModel ViewModel => (OverviewViewModel) BindingContext;
 
         private async void OnPageAppearing(object sender, EventArgs e)
         {

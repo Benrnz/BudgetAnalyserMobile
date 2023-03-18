@@ -2,11 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-<<<<<<<< HEAD:BAXMobile3/BAXMobile3.App/BAXMobile3.App.Droid/AndroidHashingAlgorithm.cs
 namespace BaxMobile3.Droid
-========
-namespace BaxMobile2.Droid
->>>>>>>> 3f69382e76fe6e3d62aeb5c45dd5de7d217ffded:BAXMobile/BaxMobile2.Droid/AndroidHashingAlgorithm.cs
 {
     public class AndroidHashingAlgorithm : IHashingAlgorithm
     {
