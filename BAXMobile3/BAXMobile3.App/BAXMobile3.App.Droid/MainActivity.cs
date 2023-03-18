@@ -1,14 +1,15 @@
 ﻿using System;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using BAXMobile;
 
-namespace BAXMobile.Droid
+namespace BaxMobile3.Droid
 {
-    [Activity(Label = "BAXMobile.Droid", Theme = "@style/MainTheme", MainLauncher = true,
+    [Activity(Label = "BAX Mobile",
+        Icon = "@drawable/icon",
+        Theme = "@style/MainTheme", 
+        MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -19,7 +20,10 @@ namespace BAXMobile.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            
+            var app = new App();
+            app.CompositeRoot(new AndroidHashingAlgorithm());
+            LoadApplication(app);
         }
     }
 }

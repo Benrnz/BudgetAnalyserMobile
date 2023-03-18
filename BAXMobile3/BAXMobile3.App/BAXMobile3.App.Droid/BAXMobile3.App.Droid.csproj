@@ -6,8 +6,8 @@
         <ProjectGuid>{C3F7E14F-74B4-4E42-A9B6-17B8345EE25C}</ProjectGuid>
         <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
-        <RootNamespace>BAXMobile.Droid</RootNamespace>
-        <AssemblyName>BAXMobile.Droid</AssemblyName>
+        <RootNamespace>BaxMobile3.Droid</RootNamespace>
+        <AssemblyName>BaxMobile3.Droid</AssemblyName>
         <AndroidApplication>True</AndroidApplication>
         <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
         <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -38,6 +38,7 @@
         <WarningLevel>4</WarningLevel>
         <AndroidManagedSymbols>true</AndroidManagedSymbols>
         <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+        <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Mono.Android" />
@@ -50,6 +51,7 @@
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="AndroidHashingAlgorithm.cs" />
         <Compile Include="MainActivity.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
