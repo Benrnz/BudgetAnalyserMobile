@@ -6,11 +6,11 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BAXMobile3.Droid")]
+[assembly: AssemblyTitle("BaxMobile3.Droid")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Rees.biz")]
-[assembly: AssemblyProduct("BAXMobile3.Droid")]
+[assembly: AssemblyProduct("BaxMobile3.Droid")]
 [assembly: AssemblyCopyright("Copyright © Rees.biz 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -27,13 +27,13 @@ namespace BAXMobile
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public BucketsListViewModel BucketsListViewModel { get; private set; }
+        public BucketsListViewModel BucketsListViewModel { get; }
 
-        public OverviewViewModel OverviewViewModel { get; private set; }
+        public OverviewViewModel OverviewViewModel { get; }
 
         public string Title
         {
-            get { return this.title; }
+            get => this.title;
             private set
             {
                 if (value == this.title) return;
