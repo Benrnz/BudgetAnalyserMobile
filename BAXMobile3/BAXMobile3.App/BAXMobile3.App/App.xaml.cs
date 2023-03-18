@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
-namespace BAXMobile3.App
+namespace BAXMobile
 {
     public partial class App : Application
     {

@@ -6,9 +6,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-namespace BAXMobile3.App.Droid
+namespace BAXMobile.Droid
 {
-    [Activity(Label = "BAXMobile3.App", Theme = "@style/MainTheme", MainLauncher = true,
+    [Activity(Label = "BAXMobile.Droid", Theme = "@style/MainTheme", MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

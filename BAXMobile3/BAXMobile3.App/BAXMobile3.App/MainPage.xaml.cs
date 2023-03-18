@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace BAXMobile3.App
+namespace BAXMobile
 {
     public partial class MainPage : ContentPage
     {
