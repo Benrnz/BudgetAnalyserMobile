@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 BAXMobile/BAXMobile/BAXMobile/SecretCreds.cs
 BAXMobile3/BAXMobile3.App/BAXMobile3.App/SecretCreds2.cs
+BAXMobile3/BAXMobile3.App/BAXMobile3.App/SecretCreds3.cs
