@@ -3,9 +3,11 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Android.Net;
 using BAXMobile.Model;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Uri = System.Uri;
 
 namespace BAXMobile.Service
 {
@@ -66,10 +68,40 @@ namespace BAXMobile.Service
                 // Note that Content-Type cannot be added to GET request using HttpClient - using Content-Type does seem to be common in examples found on the web including GET requests.
 
                 var response = await client.SendAsync(request);
-                jsonData = await response.Content.ReadAsStringAsync();
+                jsonData = string.Empty;
+                try
+                {
+                    jsonData = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<SummarisedLedgerMobileData>(jsonData);
+                }
+                catch (JsonReaderException ex)
+                {
+                    ParseException(ex, jsonData);
+                    throw;
+                }
+            }
+        }
+
+        private void ParseException(JsonReaderException ex, string json)
+        {
+            Debug.WriteLine("Error parsing JSON response from Amazon S3.");
+            Debug.WriteLine(json);
+            Debug.WriteLine(ex.ToString());
+
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return;
             }
 
-            return JsonConvert.DeserializeObject<SummarisedLedgerMobileData>(jsonData);
+            var start = json.IndexOf("<Error>");
+            var end = json.IndexOf("</Error>");
+
+            if (start > -1 && end > start)
+            {
+                // Generally not a bad to return explicit error message. This is a private app for me only.
+                var xmlError = json.Substring(start, end - start + 8);
+                throw new ApplicationException(xmlError);
+            }
         }
 
         private string CalculateHash(string canonicalisedResource)
