@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BAXMobile.Model;
@@ -15,19 +16,20 @@ namespace BAXMobile.Overview
         private bool isLoading;
         private SummarisedLedgerMobileData model;
         private string staleWarning;
+        private static string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public OverviewViewModel([NotNull] IMobileSummaryDataManager dataManager)
         {
-            if (dataManager == null) throw new ArgumentNullException(nameof(dataManager));
-            this.dataManager = dataManager;
+            this.dataManager = dataManager ?? throw new ArgumentNullException(nameof(dataManager));
             this.dataManager.DataUpdated += OnDataUpdated;
+            this.ErrorMessage = Version;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string ErrorMessage
         {
-            get { return this.errorMessage; }
+            get => this.errorMessage;
             private set
             {
                 if (value == this.errorMessage) return;
@@ -38,7 +40,7 @@ namespace BAXMobile.Overview
 
         public bool IsLoading
         {
-            get { return this.isLoading; }
+            get => this.isLoading;
             private set
             {
                 if (value == this.isLoading) return;
@@ -49,7 +51,7 @@ namespace BAXMobile.Overview
 
         public SummarisedLedgerMobileData Model
         {
-            get { return this.model; }
+            get => this.model;
             private set
             {
                 this.model = value;
@@ -59,7 +61,7 @@ namespace BAXMobile.Overview
 
         public string StaleWarning
         {
-            get { return this.staleWarning; }
+            get => this.staleWarning;
             private set
             {
                 if (value == this.staleWarning) return;
@@ -92,7 +94,11 @@ namespace BAXMobile.Overview
         {
             IsLoading = false;
             Model = this.dataManager.SummaryData;
-            ErrorMessage = this.dataManager.ErrorMessage;
+            if (this.dataManager.ErrorMessage == null)
+                ErrorMessage = Version;
+            else
+                ErrorMessage = Version + this.dataManager.ErrorMessage;
+
             if (Model != null)
             {
                 if (DateTime.Now.Subtract(Model.LastTransactionImport).TotalDays >= 5)
