@@ -34,23 +34,28 @@
         <Label
             Grid.Column="0"
             Grid.Row="2"
+            LineBreakMode="WordWrap"
             Text="Transactions Updated:" />
         <Label
             Grid.Column="1"
             Grid.Row="2"
+            LineBreakMode="WordWrap"
             Text="{Binding Model.LastTransactionImport, StringFormat='{0:d MMM yy h:mm tt}'}" />
         <Label
             Grid.Column="0"
             Grid.Row="3"
-            Text="For Month Starting:" />
+            LineBreakMode="WordWrap"
+            Text="For Period Starting:" />
         <Label
             Grid.Column="1"
             Grid.Row="3"
+            LineBreakMode="WordWrap"
             Text="{Binding Model.StartOfMonth, StringFormat='{0:d MMMM}'}" />
         <Label
             Grid.Column="0"
             Grid.Row="4"
             Grid.ColumnSpan="2"
+            LineBreakMode="WordWrap"
             Style="{StaticResource Style.Paragraph}"
             Text="{Binding ErrorMessage}"
             TextColor="{StaticResource ImportantTextColour}"/>
